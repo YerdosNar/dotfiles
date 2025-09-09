@@ -1,0 +1,23 @@
+#!/usr/bin/env bash
+
+# Rofi power menu script
+# Save this as ~/.config/rofi/rofi-power-menu and make it executable
+
+if [ -z "$@" ]; then
+    echo -en " Sleep\n Shutdown\n Reboot\n Logout"
+else
+    case "$1" in
+        " Sleep")
+            systemctl suspend
+            ;;
+        " Shutdown")
+            systemctl poweroff
+            ;;
+        " Reboot")
+            systemctl reboot
+            ;;
+        " Logout")
+            hyprctl dispatch exit
+            ;;
+    esac
+fi
