@@ -1,0 +1,116 @@
+/* ~/.config/waybar/style.css */
+* {
+    border: none;
+    border-radius: 0;
+    font-family: "Noto Sans", "Font Awesome 7 Free";
+    font-size: 14px;
+    min-height: 0;
+}
+
+window#waybar {
+    background-color: rgba(26, 27, 38, 0.8);
+    color: #cdd6f4;
+    transition-property: background-color;
+    transition-duration: .5s;
+}
+
+/* Style for all workspace buttons */
+#workspaces button {
+    padding: 2px 10px;
+    margin: 3px 3px;
+    background-color: transparent;
+    color: #cdd6f4;
+    border-radius: 10px;
+}
+
+/* Style for the active workspace */
+#workspaces button.active {
+    background-color: #89b4fa; /* Blue */
+    color: #1e1e2e;
+}
+
+#workspaces button:hover {
+    background: #45475a;
+    box-shadow: inherit;
+}
+
+#cpu,
+#custom-bluetooth,
+#pulseaudio,
+#network,
+#battery,
+#custom-power {
+    padding: 0 10px;
+    margin-top: 3px;
+    margin-right: 2px;
+    color: black;
+}
+
+#custom-bluetooth {
+    background-color: #89b4fa; /* Blue */
+    color: #1e1e2e;
+    border-radius: 10px;
+    padding: 0 10px;
+    margin: 3px 0;
+}
+
+/* Add a bar to the left of each module */
+#custom-fcitx {
+    padding: 0 10px;
+    margin-top: 3px;
+    margin-right: 0px;
+    color: black;
+    background-color: #89b4fa; /* Blue */
+    border-radius: 10px 0 0 10px;
+}
+#cpu {
+    background-color: #fab387; /* Peach */
+    border-radius: 10px;
+    margin-left: 5px;
+    padding: 0 10px;
+}
+#pulseaudio {
+    background-color: #f9e2af; /* Yellow */
+    border-radius: 10px;
+}
+#network {
+    background-color: #a6e3a1; /* Green */
+    border-radius: 10px;
+}
+#battery {
+    background-color: #b48ead; /* Mauve */
+    border-radius: 10px 0 0 10px;
+}
+#clock {
+    padding: 0 10px;
+    margin: 3px 0px;
+    border-radius: 10px;
+    background-color: #313244;
+    color: white;
+}
+#custom-power {
+    background-color: #f38ba8; /* Red */
+    color: #1e1e2e;
+    border-radius: 0 10px 10px 0;
+    margin-right: 5px;
+}
+
+/* Different colors for battery states */
+#battery.charging, #battery.plugged {
+    color: #a6e3a1; /* Green */
+}
+@keyframes blink {
+    to {
+        background-color: #f38ba8; /* Red */
+        color: #1e1e2e;
+    }
+}
+#battery.critical:not(.charging) {
+    background-color: #f38ba8;
+    color: #1e1e2e;
+    animation-name: blink;
+    animation-duration: 0.5s;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
+}

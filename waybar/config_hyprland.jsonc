@@ -1,0 +1,102 @@
+// ~/.config/waybar/config_hyprland.jsonc
+{
+    "layer": "top",
+    "position": "top",
+    "height": 35,
+    "modules-left": ["hyprland/workspaces"],
+    "modules-center": ["clock"],
+    "modules-right": ["cpu", "custom/bluetooth", "pulseaudio", "network", "battery", "custom/fcitx", "custom/power"],
+
+    // Module definitions
+    "hyprland/workspaces": {
+        "format": "{icon}",
+        "format-icons": {
+            "1": "󰎦",
+            "2": "󰎩",
+            "3": "󰎬",
+            "4": "󰎮",
+            "5": "󰎰",
+            "default": "󰎡"
+        },
+        "on-click": "activate"
+    },
+    "cpu": {
+        "format": "  {usage}%",
+        "tooltip": true,
+        "on-click": "kitty --hold htop"
+    },
+    "custom/bluetooth": {
+        "exec": "~/.config/waybar/scripts/bluetooth.sh",
+        "interval": 5,
+        "on-click": "blueman-manager",
+        "tooltip": false
+        // "format": " {status}",
+        // "format-connected": " {device_alias}",
+        // "format-disabled": " off",
+        // "on-click": "blueman-manager"
+    },
+    "clock": {
+        "format": "{:%a %H:%M}",
+        "format-alt": "{:%Y-%m-%d %H:%M:%S}",
+        "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>",
+        "calendar": {
+            "mode": "month",
+            "mode-mon-col": 3,
+            "weeks-pos": "right",
+            "on-scroll": 1,
+            "format": {
+                "months": "<span color='#ffead3'><b>{}</b></span>",
+                "days": "<span color='#ecc6d9'>{}</span>",
+                "weeks": "<span color='#99ffdd'><b>W{}</b></span>",
+                "weekdays": "<span color='#ffcc66'><b>{}</b></span>",
+                "today": "<span color='#ff6699'><b><u>{}</u></b></span>"
+            }
+        },
+        "actions": {
+            "on-click-right": "mode",
+            "on-click-forward": "tz_up",
+            "on-click-backward": "tz_down",
+            "on-scroll-up": "shift_up",
+            "on-scroll-down": "shift_down"
+        }
+    },
+    "pulseaudio": {
+        "format": "{icon}  {volume}%",
+        "format-muted": " Muted",
+        "format-icons": {
+            "default": ["", "", ""]
+        },
+        "on-click": "pavucontrol"
+    },
+    "custom/fcitx": {
+        "format": "󰌌  {}",
+        "exec": "fcitx5-remote -n | sed -e 's/Keyboard - English (US)/EN/' -e 's/Hangul/KR/'",
+        "exec-if": "pgrep fcitx5",
+        "interval": 1,
+        "on-click": "fcitx5-remote -t",
+        "tooltip": false
+    },
+    "network": {
+        "format-wifi": "  {essid}",
+        "format-ethernet": "󰈀 {ifname}",
+        "format-disconnected": "󰖪 Disconnected",
+        "on-click": "nm-connection-editor",
+        "tooltip-format-wifi": "{essid} ({signalStrength}%): {ipaddr}/{cidr}"
+        // "on-click-right": "{ipaddr}/{cidr}"
+    },
+    "battery": {
+        "states": {
+            "warning": 30,
+            "critical": 15
+        },
+        "format": "{icon}  {capacity}%",
+        "format-charging": "󰂄 {capacity}%",
+        "format-plugged": "󰂄 {capacity}%",
+        "format-icons": ["", "", "", "", ""]
+    },
+    "custom/power": {
+        "format": "⏻",
+        "on-click": "~/.config/waybar/scripts/power-menu.sh",
+        "tooltip": false
+    }
+}
