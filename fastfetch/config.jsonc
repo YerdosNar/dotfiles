@@ -1,0 +1,106 @@
+{
+  "$schema": "https://github.com/fastfetch-cli/fastfetch/raw/master/doc/json_schema.json",
+
+  "logo": {
+    "type": "auto",
+    "position": "left",
+    "padding": { "right": 4 }
+  },
+
+  "display": {
+    "separator": ": ",
+    "brightColor": true,
+    "color": {
+      "keys": "36",        // cyan
+      "title": "35",       // magenta
+      "output": "97",      // bright white
+      "separator": "37"    // gray
+    },
+    "key": {
+        "width": 12,
+        "type": "both"
+    }
+  },
+
+  "modules": [
+    {
+      "type": "os",
+      "keyIcon": "",       // Linux logo
+      "key": "OS"
+    },
+    {
+      "type": "host",
+      "keyIcon": "󰌢",       // Device icon
+      "key": "Host"
+    },
+    {
+      "type": "uptime",
+      "keyIcon": "",       // Clock icon
+      "key": "Uptime"
+    },
+    {
+      "type": "wm",
+      "keyIcon": "",       // Window Manager icon
+      "key": "WM"
+    },
+    {
+      "type": "cpu",
+      "keyIcon": "",       // CPU icon
+      "key": "CPU",
+      "temp": true
+    },
+    {
+      "type": "gpu",
+      "keyIcon": "󰾲",       // GPU icon
+      "key": "GPU",
+      "temp": true,
+      "percent": {
+        "green": 50,
+        "yellow": 80,
+        "type": 0
+      }
+    },
+    {
+      "type": "memory",
+      "keyIcon": "",       // RAM icon
+      "key": "Memory",
+      "percent": {
+        "green": 50,
+        "yellow": 80,
+        "type": 0
+      }
+    },
+    {
+      "type": "disk",
+      "keyIcon": "",       // Disk icon
+      "key": "Disk",
+      "hideFolders": "/efi:/boot:/boot/efi:/boot/firmware",
+      "showRegular": true,
+      "useAvailable": false,
+      "percent": {
+        "green": 50,
+        "yellow": 80,
+        "type": 0
+      }
+    },
+    {
+      "type": "localip",
+      "keyIcon": "󰩟",       // Network icon
+      "key": "Local IP",
+      "showIpv4": true,
+      "showIpv6": false,
+      "defaultRouteOnly": true
+    },
+    {
+      "type": "battery",
+      "keyIcon": "",       // Battery icon
+      "key": "Battery",
+      "percent": {
+        "green": 50,
+        "yellow": 20,
+        "type": 0
+      }
+    }
+  ]
+}
+
