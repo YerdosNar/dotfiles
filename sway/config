@@ -1,0 +1,143 @@
+### Variables
+set $mod Mod4
+set $term kitty
+set $menu rofi -show drun
+set $browser firefox
+
+set $left h
+set $down j
+set $up k
+set $right l
+
+### Output configuration
+output eDP-1 resolution 1920x1080 position 0 0
+output * bg ~/Pictures/arch_anime.jpg fill
+
+### Autostart ###
+exec_always --no-startup-id ~/.config/waybar/launch_waybar.sh
+exec_always --no-startup-id fcitx5 &
+
+# idle
+exec swayidle -w \
+          timeout 300 '~/.config/swaylock/swaylock.sh' \
+          timeout 600 'swaymsg "output * power off"' resume 'swaymsg "output * power on"' \
+          before-sleep '~/.config/swaylock/swaylock.sh'
+#
+# This will lock your screen after 300 seconds of inactivity, then turn off
+# your displays after another 300 seconds, and turn your screens back on when
+# resumed. It will also lock your screen before your computer goes to sleep.
+
+# Keybindings
+
+#Screenshots
+bindsym Print exec grim -g "$(slurp)" ~/Pictures/Screenshots/scrsht_$(date +%s).png
+bindsym Print+c exec grim -g "$(slurp)" - | wl-copy
+
+bindsym --locked XF86MonBrightnessUp exec brightnessctl set 5%+
+bindsym --locked XF86MonBrightnessDown exec brightnessctl set 5%-
+bindsym --locked XF86AudioMicMute exec pactl set-source-mute \@DEFAULT_SOURCE@ toggle
+bindsym --locked XF86AudioRaiseVolume exec pactl set-sink-volume \@DEFAULT_SINK@ +5%
+bindsym --locked XF86AudioLowerVolume exec pactl set-sink-volume \@DEFAULT_SINK@ -5%
+bindsym --locked XF86AudioMute exec pactl set-sink-mute \@DEFAULT_SINK@ toggle
+
+# Resize
+bindsym $mod+r mode "resize"
+mode "resize" {
+    bindsym Escape mode "default"
+    bindsym Return mode "default"
+    bindsym Right resize grow width 10px
+    bindsym Up resize shrink height 10px
+    bindsym Down resize grow height 10px
+    bindsym Left resize shrink width 10px
+    bindsym $right resize grow width 10px
+    bindsym $up resize shrink height 10px
+    bindsym $down resize grow height 10px
+    bindsym $left resize shrink width 10px
+}
+
+bindsym $mod+minus scratchpad show
+bindsym $mod+a focus parent
+bindsym $mod+space focus mode_toggle
+bindsym $mod+f floating toggle
+bindsym $mod+u fullscreen
+
+# Move to N-workspace
+bindsym $mod+Shift+0 move container to workspace number 10
+bindsym $mod+Shift+9 move container to workspace number 9
+bindsym $mod+Shift+8 move container to workspace number 8
+bindsym $mod+Shift+7 move container to workspace number 7
+bindsym $mod+Shift+6 move container to workspace number 6
+bindsym $mod+Shift+5 move container to workspace number 5
+bindsym $mod+Shift+4 move container to workspace number 4
+bindsym $mod+Shift+3 move container to workspace number 3
+bindsym $mod+Shift+2 move container to workspace number 2
+bindsym $mod+Shift+1 move container to workspace number 1
+
+bindsym $mod+Shift+minus move scratchpad
+
+# Move to N-side
+bindsym $mod+Shift+Right move right
+bindsym $mod+Shift+Up move up
+bindsym $mod+Shift+Down move down
+bindsym $mod+Shift+Left move left
+bindsym $mod+Shift+$right move right
+bindsym $mod+Shift+$up move up
+bindsym $mod+Shift+$down move down
+bindsym $mod+Shift+$left move left
+
+    #
+bindsym $mod+Shift+e layout toggle split
+bindsym $mod+Shift+t layout tabbed
+bindsym $mod+Shift+s layout stacking
+
+# Split
+bindsym $mod+Shift+v splitv
+bindsym $mod+Shift+b splith
+
+# Switch to N-workspace
+bindsym $mod+0 workspace number 10
+bindsym $mod+9 workspace number 9
+bindsym $mod+8 workspace number 8
+bindsym $mod+7 workspace number 7
+bindsym $mod+6 workspace number 6
+bindsym $mod+5 workspace number 5
+bindsym $mod+4 workspace number 4
+bindsym $mod+3 workspace number 3
+bindsym $mod+2 workspace number 2
+bindsym $mod+1 workspace number 1
+
+
+# Focus to
+bindsym $mod+Right focus right
+bindsym $mod+Up focus up
+bindsym $mod+Down focus down
+bindsym $mod+Left focus left
+bindsym $mod+$right focus right
+bindsym $mod+$up focus up
+bindsym $mod+$down focus down
+bindsym $mod+$left focus left
+
+# Close sway
+bindsym $mod+m exec swaynag -t warning -m 'You pressed the exit shortcut. Do you really want to exit sway? This will end your Wayland session.' -B 'Yes, exit sway' 'swaymsg exit'
+bindsym $mod+e exec ~/.config/swaylock/swaylock.sh
+# Reload
+bindsym $mod+c reload
+bindsym $mod+o exec systemctl suspend
+
+# Basic launching
+bindsym $mod+d exec $menu
+bindsym $mod+w kill
+bindsym $mod+b exec $browser
+bindsym $mod+t exec $term
+
+### Input configuration
+input type:touchpad {
+    dwt enabled
+    tap enabled
+    natural_scroll enabled
+    middle_emulation enabled
+}
+input type:keyboard {
+  xkb_layout "eu"
+}
+# include /etc/sway/config.d/*
