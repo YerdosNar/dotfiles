@@ -5,11 +5,11 @@ STATUS=$(bluetoothctl show | grep "Powered:" | awk '{print $2}')
 if [ "$STATUS" = "yes" ]; then
     DEVICE=$(bluetoothctl info | grep "Name:" | awk '{print substr($0,7)}')
     if [ -n "$DEVICE" ]; then
-        echo " $DEVICE"
+        echo "    $DEVICE"
     else
-        echo " On"
+        echo "    On"
     fi
 else
-    echo " Off"
+    echo "    Off"
 fi
 

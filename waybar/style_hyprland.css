@@ -1,0 +1,230 @@
+/* ~/.config/waybar/style_hyprland.css - Modern Tokyo Night Theme */
+* {
+    border: none;
+    border-radius: 0;
+    font-family: "JetBrains Mono", "Noto Sans", "Font Awesome 7 Free";
+    font-size: 13px;
+    font-weight: 500;
+    min-height: 0;
+}
+
+window#waybar {
+    background-color: transparent;
+    color: #c0caf5;
+    transition-property: background-color;
+    transition-duration: .3s;
+}
+
+/* Tooltip styling (calendar, etc.) */
+tooltip {
+    background-color: rgba(30, 35, 50, 0.95);
+    border: 1px solid rgba(125, 207, 255, 0.3);
+    border-radius: 8px;
+    color: #c0caf5;
+}
+
+tooltip label {
+    color: #c0caf5;
+}
+
+/* Calendar styling */
+calendar {
+    background-color: rgba(30, 35, 50, 0.95);
+    color: #c0caf5;
+    border-radius: 8px;
+}
+
+calendar:selected {
+    background-color: rgba(125, 207, 255, 0.2);
+    color: #7dcfff;
+}
+
+calendar:indeterminate {
+    color: #787c99;
+}
+
+calendar.header {
+    background-color: rgba(125, 207, 255, 0.15);
+    color: #7dcfff;
+    font-weight: 600;
+    border-radius: 8px 8px 0 0;
+}
+
+calendar.button {
+    color: #c0caf5;
+}
+
+calendar.button:hover {
+    background-color: rgba(125, 207, 255, 0.15);
+    color: #7dcfff;
+}
+
+/* Style for all workspace buttons */
+#workspaces button {
+    padding: 4px 10px;
+    margin: 4px 2px;
+    background-color: rgba(30, 35, 50, 0.8);
+    color: #787c99;
+    border-radius: 6px;
+    border: 1px solid rgba(125, 125, 125, 0.2);
+    transition: all 0.3s ease;
+}
+
+/* Style for the active workspace */
+#workspaces button.active {
+    background-color: rgba(125, 207, 255, 0.15);
+    color: #7dcfff;
+    border: 1px solid #7dcfff;
+    box-shadow: 0 0 10px rgba(125, 207, 255, 0.3);
+}
+
+#workspaces button:hover {
+    background-color: rgba(125, 207, 255, 0.1);
+    border: 1px solid rgba(125, 207, 255, 0.5);
+    color: #a9b1d6;
+    box-shadow: 0 0 8px rgba(125, 207, 255, 0.2);
+}
+
+/* Base module styling */
+#cpu,
+#custom-bluetooth,
+#pulseaudio,
+#network,
+#battery,
+#custom-power,
+#custom-fcitx {
+    padding: 4px 12px;
+    margin: 4px 3px;
+    background-color: rgba(30, 35, 50, 0.8);
+    color: #c0caf5;
+    border-radius: 8px;
+    border: 1px solid rgba(125, 125, 125, 0.25);
+    transition: all 0.3s ease;
+}
+
+/* Custom Bluetooth Module */
+#custom-bluetooth {
+    border-left: 3px solid #7dcfff;
+    box-shadow: inset 0 0 5px rgba(125, 207, 255, 0.1);
+}
+
+#custom-bluetooth:hover {
+    background-color: rgba(125, 207, 255, 0.1);
+    box-shadow: 0 0 8px rgba(125, 207, 255, 0.2);
+}
+
+#custom-bluetooth.on {
+    color: #7dcfff;
+}
+
+#custom-bluetooth.off {
+    color: #787c99;
+}
+
+/* Fcitx Module */
+#custom-fcitx {
+    border-left: 3px solid #bb9af7;
+    box-shadow: inset 0 0 5px rgba(187, 154, 247, 0.1);
+}
+
+/* CPU Module */
+#cpu {
+    border-left: 3px solid #ff9e64;
+    box-shadow: inset 0 0 5px rgba(255, 158, 100, 0.1);
+}
+
+#cpu:hover {
+    background-color: rgba(255, 158, 100, 0.1);
+    box-shadow: 0 0 8px rgba(255, 158, 100, 0.2);
+}
+
+/* Audio Module */
+#pulseaudio {
+    border-left: 3px solid #e0af68;
+    box-shadow: inset 0 0 5px rgba(224, 175, 104, 0.1);
+}
+
+#pulseaudio:hover {
+    background-color: rgba(224, 175, 104, 0.1);
+    box-shadow: 0 0 8px rgba(224, 175, 104, 0.2);
+}
+
+/* Network Module */
+#network {
+    border-left: 3px solid #9ece6a;
+    box-shadow: inset 0 0 5px rgba(158, 206, 106, 0.1);
+}
+
+#network:hover {
+    background-color: rgba(158, 206, 106, 0.1);
+    box-shadow: 0 0 8px rgba(158, 206, 106, 0.2);
+}
+
+/* Battery Module */
+#battery {
+    border-left: 3px solid #7aa2f7;
+    box-shadow: inset 0 0 5px rgba(122, 162, 247, 0.1);
+}
+
+#battery:hover {
+    background-color: rgba(122, 162, 247, 0.1);
+    box-shadow: 0 0 8px rgba(122, 162, 247, 0.2);
+}
+
+/* Clock Module */
+#clock {
+    padding: 4px 14px;
+    margin: 4px 4px;
+    border-radius: 8px;
+    background-color: rgba(125, 207, 255, 0.1);
+    color: #7dcfff;
+    border: 1px solid rgba(125, 207, 255, 0.3);
+    font-weight: 600;
+    box-shadow: 0 0 10px rgba(125, 207, 255, 0.15);
+}
+
+/* Power Menu Module */
+#custom-power {
+    border-left: 3px solid #f7768e;
+    box-shadow: inset 0 0 5px rgba(247, 118, 142, 0.1);
+    color: #f7768e;
+    font-weight: 600;
+}
+
+#custom-power:hover {
+    background-color: rgba(247, 118, 142, 0.15);
+    box-shadow: 0 0 10px rgba(247, 118, 142, 0.3);
+}
+
+/* Battery States */
+#battery.charging, #battery.plugged {
+    border-left: 3px solid #9ece6a;
+    color: #9ece6a;
+    box-shadow: inset 0 0 5px rgba(158, 206, 106, 0.2);
+}
+
+@keyframes blink {
+    0% {
+        background-color: rgba(247, 118, 142, 0.2);
+        border-left-color: #f7768e;
+        box-shadow: 0 0 15px rgba(247, 118, 142, 0.4);
+    }
+    50% {
+        background-color: rgba(247, 118, 142, 0.4);
+        box-shadow: 0 0 20px rgba(247, 118, 142, 0.6);
+    }
+    100% {
+        background-color: rgba(247, 118, 142, 0.2);
+        box-shadow: 0 0 15px rgba(247, 118, 142, 0.4);
+    }
+}
+
+#battery.critical:not(.charging) {
+    border-left: 3px solid #f7768e;
+    color: #f7768e;
+    animation-name: blink;
+    animation-duration: 1s;
+    animation-timing-function: ease-in-out;
+    animation-iteration-count: infinite;
+    font-weight: 700;
+}
