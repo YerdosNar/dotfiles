@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-IMAGE=./arch.png
+IMAGE=~/.config/swaylock/arch.png
 
 swaylock \
     --image $IMAGE \
