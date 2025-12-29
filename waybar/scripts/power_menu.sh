@@ -15,5 +15,5 @@ case "$chosen" in
     "󰒲 Sleep")
         systemctl suspend ;;
     " Lock")
-        ~/.config/swaylock/swaylock.sh ;; # Make sure you have swaylock installed
+        bash ~/.config/swaylock/swaylock.sh ;; # Make sure you have swaylock installed
 esac
