@@ -4,7 +4,7 @@ IMAGE=~/.config/swaylock/arch.png
 
 swaylock \
     --image $IMAGE \
-    --effect-blur 5x2 \
+    --effect-blur 2x2 \
     --effect-vignette 0.5:0.5 \
     --clock \
     --indicator \
