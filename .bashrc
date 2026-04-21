@@ -17,9 +17,13 @@ RED='\033[0;31m\]'
 GREEN='\033[0;32m\]'
 YELLOW='\033[1;33m\]'
 BLUE='\033[0;34m\]'
+CYN='\033[0;36m\]'
 NC='\033[0m\]' # No Color
 
-PS1="${GREEN}\u${NC}@${RED}\h${NC}${BLUE}\w${NC}\n\$ "
+parse_git_branch() {
+    git branch 2> /dev/null | sed -n -e 's/^\* \(.*\)/\1/p'
+}
+PS1="${GREEN}\u${NC}@${RED}\h${NC}${BLUE}\w${NC}\n${CYN}\$(parse_git_branch)${NC}->\$ "
 
 # HISTORY
 HISTCONTROL=ignoreboth
