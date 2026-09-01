@@ -1,12 +1,12 @@
 #!/usr/bin/env bash
 
-set -xeuo pipefail
+set -euo pipefail
 
 GRN="\033[32m"
 BLU="\033[34m"
 RST="\033[0m"
-info()          {echo -e "${BLU}[i]${RST} $1"}
-success()       {echo -e "${GRN}[v]${RST} $1"}
+info()          { echo -e "${BLU}[i]${RST} $1"; }
+success()       { echo -e "${GRN}[v]${RST} $1"; }
 
 PKG_MNGR=Unknown
 
@@ -63,3 +63,5 @@ main() {
 
         success "DONE!"
 }
+
+main "$@"
