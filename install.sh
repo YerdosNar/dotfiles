@@ -41,7 +41,11 @@ main() {
         set_pkg_manager
         info "Installing ${BLU}lsd neovim${RST}"
         if [ "$PKG_MNGR" == "pacman" ]; then
-                sudo pacman -Syu lsd neovim fastfetch --noconfirm
+                sudo pacman -Syu lsd neovim fastfetch --noconfirm --needed
+
+                info "Adding aliases..."
+                echo "# script generated aliases"             >> .bash_aliases
+                echo ""                                       >> .bash_aliases
                 echo "alias findp='sudo pacman -Ss'"          >> .bash_aliases
                 echo "alias rmvp='sudo pacman -Rns'"          >> .bash_aliases
                 echo "alias updt='sudo pacman -Syu --needed'" >> .bash_aliases
@@ -55,6 +59,9 @@ main() {
                 info "Installing..."
                 sudo $PKG_MNGR install lsd neovim fastfetch -y
 
+                info "Adding aliases..."
+                echo "# script generated aliases"           >> .bash_aliases
+                echo ""                                     >> .bash_aliases
                 echo "alias findp='sudo $PKG_MNGR search'"  >> .bash_aliases
                 echo "alias updt='sudo $PKG_MNGR update && sudo $PKG_MNGR upgrade'" >> .bash_aliases
                 echo "alias instl='sudo $PKG_MNGR install'" >> .bash_aliases

@@ -34,3 +34,4 @@ alias src='source ~/.bashrc'
 
 # Maven
 alias mrun='./mvnw spring-boot:run'
+
